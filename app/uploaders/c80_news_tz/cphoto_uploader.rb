@@ -22,7 +22,7 @@ module C80NewsTz
     end
 
     def store_dir
-      "uploads/companies/#{format("%2d", model.company_id)}"
+      "uploads/companies/#{format("%02d", model.company_id)}"
     end
 
     def extension_white_list

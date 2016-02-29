@@ -27,7 +27,7 @@ module C80NewsTz
     end
 
     def store_dir
-      "uploads/news/#{format("%2d", model.fact_id)}"
+      "uploads/news/#{format("%02d", model.fact_id)}"
     end
 
     def extension_white_list
