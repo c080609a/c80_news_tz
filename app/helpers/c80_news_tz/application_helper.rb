@@ -37,5 +37,17 @@ module C80NewsTz
       "rubrics/#{rubric_slug}"
     end
 
+    def apph_url_for_company(company_slug)
+      "companies/#{company_slug}"
+    end
+    
+    def apph_url_for_notice(notice_slug)
+      "notices/#{notice_slug}"
+    end
+    
+    def apph_url_for_issue(issue_id)
+      "issues/#{issue_id}"
+    end
+
   end
 end
