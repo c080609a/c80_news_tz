@@ -1,0 +1,6 @@
+# rake db:seed:07_fill_news_props
+
+puts 'Fill C80NewsTz::Prop...'
+
+C80NewsTz::Prop.delete_all
+C80NewsTz::Prop.create!({ per_page:8, per_widget:4 })

@@ -1,0 +1,12 @@
+<div class="div_facts">
+  <% news_list.each do |fact| %>
+
+      <%= check_preview(render_one_fact(fact).to_s, fact.fphotos, fact.title) %>
+
+  <% end %>
+</div>
+<% if is_news_page %>
+    <div class="div_will_paginate">
+      <%= will_paginate news_list %>
+    </div>
+<% end %>

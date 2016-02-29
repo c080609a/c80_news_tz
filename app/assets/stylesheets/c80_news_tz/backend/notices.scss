@@ -1,0 +1,68 @@
+body.new.admin_notices, body.edit.admin_notices {
+
+  /* фото в галерее */
+  li.has_many_container.gphotos {
+
+    padding-top: 0;
+
+    > h3 {
+      display: none;
+    }
+
+    fieldset {
+      display: inline-block;
+      float: left;
+      position: relative;
+      width: 20%;
+      height: 201px;
+
+      ol {
+        li {
+
+          &.file {
+            padding-bottom: 0;
+          }
+
+          &.has_many_delete {
+            padding-top: 0;
+          }
+
+          label {
+            padding: 0;
+            &.label {
+              display: none;
+            }
+          }
+
+          input[type=file] {
+            width: 200px;
+            overflow: hidden;
+          }
+
+          p.inline-hints {
+            margin: 0 !important;
+          }
+
+        }
+      }
+
+    }
+
+    > a.button.has_many_add {
+      clear: both;
+      float: left;
+      display: block;
+      position: relative;
+    }
+  }
+
+  li#notice_companies_input > fieldset > legend.label {
+    display: none;
+  }
+
+  /*скроем артефакт*/
+  #notice_custom_org_input > label.label {
+    visibility: hidden;
+  }
+
+}

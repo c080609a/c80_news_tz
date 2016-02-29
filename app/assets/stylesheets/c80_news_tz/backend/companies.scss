@@ -1,0 +1,98 @@
+body.new.admin_companies, body.edit.admin_companies {
+
+  li.has_many_container.galleries {
+
+    padding-top: 0;
+
+    > h3 {
+      display: none;
+    }
+
+    fieldset > ol > li.boolean label {
+      /* width: 80%; */
+      /* padding-left: 20%; */
+      /* padding-right: 10px; */
+      text-transform: none !important;
+      font-weight: normal;
+      float: right;
+      text-align: right;
+    }
+
+    /* фото в галерее */
+    li.has_many_container.gphotos {
+
+      padding-top: 0;
+
+      > h3 {
+        display: none;
+      }
+
+      fieldset {
+        display: inline-block;
+        float: left;
+        position: relative;
+        width: 20%;
+        height: 241px;
+
+        ol {
+          li {
+
+            &.file {
+              padding-bottom: 0;
+            }
+
+            &.has_many_delete {
+              padding-top: 0;
+            }
+
+            label {
+              padding: 0;
+              &.label {
+                display: none;
+              }
+            }
+
+            input[type=file] {
+              width: 200px;
+              overflow: hidden;
+            }
+
+            p.inline-hints {
+              margin: 0 !important;
+            }
+
+          }
+        }
+
+        &.inputs {
+          background: transparent;
+          border-radius: 0;
+          box-shadow: none;
+        }
+      }
+
+      > a.button.has_many_add {
+        clear: both;
+        float: left;
+        display: block;
+        position: relative;
+      }
+    }
+
+    > a.button.has_many_add {
+      clear: both;
+      float: right;
+      display: block;
+      position: relative;
+    }
+
+    fieldset ol li fieldset ol li a.button.has_many_remove {
+      float: right;
+    }
+
+  }
+
+  li#company_facts_input > fieldset > legend.label {
+    display: none;
+  }
+}

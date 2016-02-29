@@ -1,0 +1,2 @@
+#!/bin/bash
+rake db:seed:00_create_admin_user db:seed:01_fill_site_props db:seed:03_fill_menus db:seed:04_fill_menu_items db:seed:05_fill_pages db:seed:06_fill_page_content_width db:seed:19_fill_news_props db:seed:20_fill_rubrics db:seed:21_fill_facts

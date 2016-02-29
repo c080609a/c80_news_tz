@@ -1,0 +1,10 @@
+# rake db:seed:20_fill_rubrics
+
+puts 'Fill C80NewsTz::Rubric...'
+
+C80NewsTz::Rubric.delete_all
+C80NewsTz::Rubric.create!([
+                              {id:1, title: 'Наука и техника'},
+                              {id:2, title: 'Исследования'},
+                              {id:3, title: 'Первая полоса'}
+                          ])

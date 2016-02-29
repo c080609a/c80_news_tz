@@ -1,0 +1,19 @@
+# rake db:seed:23_fill_issues
+
+puts 'Fill C80NewsTz::Issue...'
+
+C80NewsTz::Issue.delete_all
+
+C80NewsTz::Issue.create!([
+                            { id:1, number: '2(23)' },
+                            { id:2, number: '3(24)' },
+                            { id:3, number: '4(25)' },
+                            { id:4, number: '5(26)' },
+                        ])
+
+C80NewsTz::Issue::HABTM_Facts.create!([
+                                  {fact_id: 1, issue_id: 1},
+                                  {fact_id: 2, issue_id: 2},
+                                  {fact_id: 3, issue_id: 3},
+                                  {fact_id: 4, issue_id: 4},
+                              ])
