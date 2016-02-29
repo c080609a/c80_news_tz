@@ -1,4 +1,6 @@
+include ActionView::Helpers::SanitizeHelper
 require "babosa"
+
 module C80NewsTz
   class Company < ActiveRecord::Base
     has_many :galleries, :dependent => :destroy
@@ -36,6 +38,17 @@ module C80NewsTz
     def should_generate_new_friendly_id?
       slug.blank?
       # name_changed? || super
+    end
+
+    def desc_short
+      result = ''
+
+      if desc.present?
+        d = desc.gsub!(/\[\[\d\]\]/, '')
+        result = strip_tags(d)[0..100]
+      end
+
+      result
     end
 
   end
