@@ -45,6 +45,9 @@ module C80NewsTz
 
       if desc.present?
         d = desc.gsub!(/\[\[\d\]\]/, '')
+        if d.nil?
+          d = desc
+        end
         result = strip_tags(d)[0..100]
       end
 
