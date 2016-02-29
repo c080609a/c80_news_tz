@@ -19,11 +19,6 @@ Or install it yourself as:
 
     $ gem install c80_news_tz
 
-Execute:
-
-    $ rake db:migrate
-    $ ./seeds.sh
-
 ## Usage
 
 1) `rake db:migrate`
