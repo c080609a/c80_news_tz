@@ -14,8 +14,8 @@ ru:
         one: "компанию"
         other: "Компании"
       fact:
-        one: 'новость'
-        other: 'Новости'
+        one: 'публикация'
+        other: 'Публикации'
       issue:
          one: 'номер журнала'
          other: 'Номера журнала'
@@ -47,7 +47,7 @@ ru:
         title: 'Название'
         activity_type: 'Род деятельности'
         desc: 'Описание'
-        facts: 'Новости'
+        facts: 'Публикации'
       c80_news_tz/gallery:
         title: 'Название галереи'
       c80_news_tz/fact:
@@ -64,7 +64,7 @@ ru:
         number: 'Номер'
         pdf: 'PDF'
         pdfs: 'PDF'
-        facts: 'Новости'
+        facts: 'Публикации'
       c80_news_tz/rubric:
         title: 'Название'
-        facts: 'Новости'
+        facts: 'Публикации'

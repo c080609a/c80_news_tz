@@ -3,15 +3,15 @@ module C80NewsTz
     def validate(record)
 
       unless record.title.present?
-        record.errors[:title] = 'Название новости не может быть пустым'
+        record.errors[:title] = 'Название публикации не может быть пустым'
       end
 
-      unless record.short.present?
-        record.errors[:short] = 'Заполните краткое описание новости'
-      end
+      # unless record.short.present?
+      #   record.errors[:short] = 'Заполните краткое описание публикации'
+      # end
 
       unless record.full.present?
-        record.errors[:full] = 'Текст новости не может быть пустым'
+        record.errors[:full] = 'Текст публикации не может быть пустым'
       end
 
     end

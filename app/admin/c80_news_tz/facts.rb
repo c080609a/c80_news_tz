@@ -2,7 +2,7 @@ ActiveAdmin.register C80NewsTz::Fact, :as => 'Fact' do
 
   before_filter :skip_sidebar!, :only => :index
 
-  menu :label => 'Новости', :parent => 'Содержимое сайта'
+  menu :label => 'Публикации', :parent => 'Содержимое сайта'
 
   permit_params :short,
                 :title,
@@ -74,7 +74,7 @@ ActiveAdmin.register C80NewsTz::Fact, :as => 'Fact' do
       f.input :short, :input_html => {:rows => 3, :class => 'code_area'}
       f.input :leader_abz, :input_html => {:rows => 3, :class => 'code_area'}
 
-      f.inputs 'Картинки, вставляемые в текст новости (первая картинка идёт в предпросмотр новости)', :class => 'collapsed' do
+      f.inputs 'Картинки, вставляемые в текст публикации (первая картинка идёт в предпросмотр публикации)', :class => 'collapsed' do
         f.has_many :fphotos, :allow_destroy => true do |fphotos|
           fphotos.input :image,
                        :as => :file,
@@ -82,7 +82,7 @@ ActiveAdmin.register C80NewsTz::Fact, :as => 'Fact' do
         end
       end
 
-      f.inputs 'Текст новости' do
+      f.inputs 'Текст публикации' do
         f.input :full, :as => :ckeditor
       end
 

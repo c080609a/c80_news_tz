@@ -100,7 +100,7 @@ ActiveAdmin.register C80NewsTz::Company, :as => 'Company' do
         ff.input :file, :as => :file, :hint => ff.template.asset_url(ff.object.file)
       end
 =end
-    f.inputs 'Новости\публикации, связанные с компанией', :class => 'collapsed' do
+    f.inputs 'Публикации, связанные с компанией', :class => 'collapsed' do
       f.input :facts,
               :as => :check_boxes,
               :member_label => Proc.new { |p|
