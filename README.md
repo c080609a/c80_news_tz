@@ -7,9 +7,7 @@ News HABTM Rubrics. News HABTM Issues. News HABTM Companies. Companies has_many 
 
 Add this line to your application's Gemfile:
 
-```ruby
-gem 'c80_news_tz'
-```
+    gem 'c80_news_tz'
 
 And then execute:
 
@@ -19,52 +17,87 @@ Or install it yourself as:
 
     $ gem install c80_news_tz
 
-## Usage
+Perform migrations:
 
-1) `rake db:migrate`
+    $ rake db:migrate
 
-2) Скопировать example файлы из `db\seeds\`, убрать расширение example.
+Copy example seed files from `<GEM_FOLDER>\db\seeds\` to `<HOST_PROJECT_FOLDER>\db\seeds\`,
+remove `.example` extensions.
 
-3) `cp seeds.sh.example seeds.sh; sudo chmod +x seeds.sh; ./seeds.sh`.
+Copy seeds.sh.example file:
 
-4) Add the line to application's routes file:
+    cp <GEM_FOLDER>\seeds.sh.example <HOST_PROJECT_FOLDER>\seeds.sh; sudo chmod +x seeds.sh; ./seeds.sh
+    
+Add the line to application's routes file:
 
-```
-mount C80NewsTz::Engine => '/'
-```
+    mount C80NewsTz::Engine => '/'
 
-5) Add this line to `application.js.coffee`:
+Add this line to `application.js.coffee`:
 
-```
-#= require c80_news_tz
-```
+    #= require c80_news_tz
 
-6) Add this line to `application.scss`:
+Add this line to `application.scss`:
 
-```
-@import "c80_news_tz/application";
-```
+    @import "c80_news_tz/application";
 
-7) Add this line to `application_controller.rb`:
+Add this line to `application_controller.rb`:
 
-```
-helper C80NewsTz::Engine.helpers
-```
+    helper C80NewsTz::Engine.helpers
 
-This gem uses: ActiveAdmin, Fontawesome.
+This gem uses: ActiveAdmin, Fontawesome. Add this to your `active_admin_custom.scss` file:
 
-Add this to your `active_admin_custom.scss` file:
+    @import "font-awesome";
 
-```scss
-@import "font-awesome";
-```
+Add these lines to `routes.rb` (optional):
+
+    get '/companies/:company_slug' => 'site#company'
+    get '/news/:fact_slug' => 'site#fact'
+    get '/issues/:issue_slug' => 'site#issue'
+    get '/notices/:notice_slug' => 'site#notice'
+    get '/rubrics/:rubric_slug' => 'site#rubric'
+
+Implement these methods in `site_controller.rb` (optional):
+    
+    def company
+    end
+    
+    # просмотр новости на отдельной странице
+    def fact
+      @fact = C80NewsTz::Fact.where(:slug => params[:fact_slug]).first
+      @vparams[:page_content] = @fact.full if @fact.full.present?
+      @vparams[:body_id] = 'fact'
+      add_title @fact.title
+      # add_breadcrumb @page.title
+      @vparams[:description] = @fact.short_meta_description if @fact.short_meta_description.present?
+      override_with_seo
+      # найти и подсветить родительский пункт меню
+      @vparams[:active_menus] << MenuItem.where(:title => 'Новости').first.id
+    end
+  
+    def issue
+      # ...
+    end
+    
+    def notice
+      # ...
+    end
+  
+    # просмотр рубрики на отдельной странице
+    def rubric
+      @rubric = C80NewsTz::Rubric.where(:slug => params[:rubric_slug]).first
+      add_title(@rubric.title)
+      override_with_seo
+    end
+
+Implement corresponding views (optional). For example `views/site/fact.html.erb`:
+    
+    <h1><%= @fact.title %></h1>
+    <%= check_page_art(@vparams[:page_content], @fact.fphotos, @fact.title).html_safe %>
 
 ## Available helper methods
 
-```
-render_news_block
-render_one_fact
-```
+    render_news_block
+    render_one_fact
 
 ## Development
 

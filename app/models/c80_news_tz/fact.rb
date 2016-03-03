@@ -42,9 +42,12 @@ module C80NewsTz
 
     # выдать картинку, которая пойдёт в блок преьвю
     def photo_preview
+      result = nil
       if fphotos.count > 0
-        fphotos.first.image
+        result = fphotos.first.image
+      else
       end
+      result
     end
 
   end
