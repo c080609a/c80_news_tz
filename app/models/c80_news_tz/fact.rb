@@ -50,5 +50,15 @@ module C80NewsTz
       result
     end
 
+    # выдать строку: title первой попавшейся рубрики
+    # если таковой нету - выдаётся пустая строка
+    def rubric_title
+      result = ""
+      if rubrics.count > 0
+        result = rubrics.first.title
+      end
+      result
+    end
+
   end
 end
