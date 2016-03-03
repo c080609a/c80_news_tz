@@ -7,6 +7,7 @@ ActiveAdmin.register C80NewsTz::Company, :as => 'Company' do
   permit_params :title,
                 :activity_type,
                 :desc,
+                :logo,
                 :fact_ids => [],
                 :adress_attributes => [:id, :locality, :street, :telephone_1, :telephone_2, :telephone_3, :latitude, :longitude, :email_1, :email_2, :site_1, :site_2],
                 :cphotos_attributes => [:id, :image, :_destroy],
@@ -64,7 +65,7 @@ ActiveAdmin.register C80NewsTz::Company, :as => 'Company' do
 
       f.input :title
       f.input :activity_type
-
+      f.input :logo, :hint => "#{image_tag("#{f.object.logo.url}")}".html_safe
     end
 
     f.inputs "Адрес", :class => 'collapsed', for: [:adress, f.object.adress || C80NewsTz::Adress.new] do |s|

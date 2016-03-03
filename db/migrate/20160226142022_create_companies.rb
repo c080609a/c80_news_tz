@@ -5,6 +5,7 @@ class CreateCompanies < ActiveRecord::Migration
       t.string :activity_type
       t.text :desc
       t.string :slug
+      t.string :logo
 
       t.timestamps
     end
