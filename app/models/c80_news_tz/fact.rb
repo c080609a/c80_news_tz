@@ -60,5 +60,17 @@ module C80NewsTz
       result
     end
 
+    # выдать логотип первой попавшейся компании
+    # если чего-то нету - выдаётся nil
+    def company_logo
+      result = nil
+      if companies.count > 0
+        if companies.first.logo.present?
+          result = companies.first.logo.image
+        end
+      end
+      result
+    end
+
   end
 end
