@@ -40,5 +40,12 @@ module C80NewsTz
 
     end
 
+    # выдать картинку, которая пойдёт в блок преьвю
+    def photo_preview
+      if fphotos.count > 0
+        fphotos.first.image
+      end
+    end
+
   end
 end

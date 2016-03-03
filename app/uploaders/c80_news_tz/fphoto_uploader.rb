@@ -26,6 +26,11 @@ module C80NewsTz
       process :resize_to_fill => [229, 152]
     end
 
+    # идёт в блок "главная публикация", что на главной
+    version :thumb_preview_big do
+      process :resize_to_fill => [500, 321]
+    end
+
     def store_dir
       "uploads/news/#{format("%02d", model.fact_id)}"
     end
