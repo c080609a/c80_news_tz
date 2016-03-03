@@ -66,7 +66,7 @@ module C80NewsTz
       result = nil
       if companies.count > 0
         if companies.first.logo.present?
-          result = companies.first.logo.image
+          result = companies.first.logo
         end
       end
       result
