@@ -22,6 +22,9 @@ ru:
       rubric:
          one: 'рубрику'
          other: 'Рубрики'
+      location:
+         one: 'место'
+         other: 'Места на главной под публикации'
     attributes:
       c80_news_tz/notice:
         title: "Название"
@@ -68,3 +71,6 @@ ru:
       c80_news_tz/rubric:
         title: 'Название'
         facts: 'Публикации'
+      c80_news_tz/location:
+        title: 'Название'
+        facts: 'Публикация'

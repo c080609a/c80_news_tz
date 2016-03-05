@@ -13,6 +13,7 @@ module C80NewsTz
 
     has_and_belongs_to_many :rubrics, :join_table => 'c80_news_tz_facts_rubrics'
     has_and_belongs_to_many :companies, :join_table => 'c80_news_tz_companies_facts'
+    has_and_belongs_to_many :locations, :join_table => 'c80_news_tz_facts_locations'
 
     validates_with FactValidator
     default_scope {order(:created_at => :desc)}
@@ -69,6 +70,27 @@ module C80NewsTz
           result = companies.first.logo
         end
       end
+      result
+    end
+
+    # выдать массив хэшей: список фактов, находящихся в указанных позициях, отсортированный по location_id
+    def self.where_locations(arr_locs_ids)
+      # f = C80NewsTz::Fact.joins(:locations).where(:c80_news_tz_locations => {:id => [1,2]})
+
+      s = "
+        SELECT
+          `c80_news_tz_facts`.*,
+          `c80_news_tz_locations`.`id` AS `location_id`
+        FROM `c80_news_tz_facts`
+          INNER JOIN `c80_news_tz_facts_locations` ON `c80_news_tz_facts_locations`.`fact_id` = `c80_news_tz_facts`.`id`
+          INNER JOIN `c80_news_tz_locations` ON `c80_news_tz_locations`.`id` = `c80_news_tz_facts_locations`.`location_id`
+        WHERE `c80_news_tz_locations`.`id` IN (#{arr_locs_ids.join(",")})
+        ORDER BY `location_id`;
+      "
+
+      # result = self.connection.select_all(s)
+      result = self.find_by_sql(s)
+
       result
     end
 
