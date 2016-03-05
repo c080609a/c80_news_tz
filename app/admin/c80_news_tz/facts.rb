@@ -29,7 +29,7 @@ ActiveAdmin.register C80NewsTz::Fact, :as => 'Fact' do
 
     column '' do |fact|
       if fact.fphotos.count > 0
-        image_tag(fact.fphotos.first.image.thumb_preview)
+        image_tag(fact.fphotos.first.image.thumb_preview_medium)
       end
     end
 
@@ -78,7 +78,7 @@ ActiveAdmin.register C80NewsTz::Fact, :as => 'Fact' do
         f.has_many :fphotos, :allow_destroy => true do |fphotos|
           fphotos.input :image,
                        :as => :file,
-                       :hint => image_tag(fphotos.object.image.thumb_preview)
+                       :hint => image_tag(fphotos.object.image.thumb_preview_medium)
         end
       end
 

@@ -22,8 +22,12 @@ module C80NewsTz
       process :resize_to_limit_small
     end
 
-    version :thumb_preview do
-      process :resize_to_fill => [229, 152]
+    version :thumb_preview_small do
+      process :resize_to_fill => [126, 84]
+    end
+
+    version :thumb_preview_medium do
+      process :resize_to_fill => [223, 149]
     end
 
     # идёт в блок "главная публикация", что на главной

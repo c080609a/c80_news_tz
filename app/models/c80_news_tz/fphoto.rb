@@ -35,10 +35,10 @@ module C80NewsTz
     end
 
     # выдать размеры картинки thumb_preview
-    def thumb_preview_size
-      img = MiniMagick::Image.open(image.thumb_preview.path)
-      [img["width"],img["height"]]
-    end
+    # def thumb_preview_size
+    #   img = MiniMagick::Image.open(image.thumb_preview.path)
+    #   [img["width"],img["height"]]
+    # end
 
   end
 end
