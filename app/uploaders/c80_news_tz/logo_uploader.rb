@@ -16,6 +16,19 @@ module C80NewsTz
       process :resize_to_fill => [124,74]
     end
 
+    version :thumb_preview_small do
+      process :resize_to_fit => [80, 44]
+    end
+
+    version :thumb_preview_medium do
+      process :resize_to_fit => [80, 44]
+    end
+
+    # идёт в блок "главная публикация", что на главной
+    version :thumb_preview_big do
+      process :resize_to_fit => [124, 124]
+    end
+
     def store_dir
       "uploads/companies/_logos/#{format("%02d", model.id)}"
     end
