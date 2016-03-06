@@ -24,7 +24,7 @@ module C80NewsTz
     has_and_belongs_to_many :facts, :join_table => 'c80_news_tz_companies_facts'
     has_and_belongs_to_many :notices, :join_table => 'c80_news_tz_companies_notices'
 
-    mount_uploader :logo, LogoUploader
+    mount_uploader :logo, ClogoUploader
 
     extend FriendlyId
     friendly_id :title, use: :slugged

@@ -1,6 +1,6 @@
 # грузит лого компании
 module C80NewsTz
-  class LogoUploader < CarrierWave::Uploader::Base
+  class ClogoUploader < CarrierWave::Uploader::Base
 
     include CarrierWave::MiniMagick
 
