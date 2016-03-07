@@ -1,3 +1,7 @@
+<%# эту переменную возьмёт fact_ajax.js: а именно - fNewsdoAjaxRequest пошлёт как параметр на guru.js %>
+<script>
+  rubric_slug = "<%= rubric_slug %>";
+</script>
 <div class="ajax_div">
   <%= render :partial => "shared/news_list",
              :locals => {
