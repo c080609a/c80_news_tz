@@ -6,7 +6,7 @@ module C80NewsTz
 
     def render_news_block(rubric_slug, page=1)
       per_page = Prop.first.per_page
-      news = Fact.paginate(:page => page,:per_page => per_page)
+      news = Fact.where_rubric(rubric_slug).paginate(:page => page,:per_page => per_page)
 
       news_for_render = []
       news.each do |p|

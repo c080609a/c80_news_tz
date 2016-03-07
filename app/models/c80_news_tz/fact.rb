@@ -94,5 +94,10 @@ module C80NewsTz
       result
     end
 
+    # выдать факты, принадлежащие указанной рубрике
+    def self.where_rubric(rubric_slug)
+      self.joins(:rubrics).where(:c80_news_tz_rubrics => {:slug => rubric_slug})
+    end
+
   end
 end
