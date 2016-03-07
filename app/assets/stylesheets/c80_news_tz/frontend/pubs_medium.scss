@@ -1,0 +1,64 @@
+/* preview блок публикации, medium вариант */
+/* три публикации в ряд */
+
+div.pub_medium {
+  float: left;
+  height: 310px;
+  width: 223px;
+  position: relative;
+
+  &.pub_medium_1 {
+    margin: 0 71px;
+  }
+
+  div.time {
+    height: 24px;
+    line-height: 24px;
+    font-size: 12px;
+    color: #9c9c9c;
+  }
+
+  div.rubric_title {
+    height: 30px;
+    min-width: 130px;
+    color: #3c4f65;
+    font-size: 12px;
+    padding: 2px 0 0 0;
+    line-height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  div.title {
+    margin-bottom: 10px;
+    a {
+      color: black;
+      text-decoration: underline;
+      font-size: 16px;
+      &:hover { color: #2e2e2e;}
+    }
+  }
+
+  div.comments {
+    cursor: pointer;
+    color: #9c9c9c;
+    font-size: 12px;
+
+    position: absolute;
+    bottom: 5px;
+
+    i {
+      width: 12px;
+      height: 12px;
+      color: #F5633E;
+    }
+  }
+
+  a.company_logo {
+    background: transparent !important;
+    position: absolute;
+    bottom:0;
+    right:0;
+  }
+
+}
