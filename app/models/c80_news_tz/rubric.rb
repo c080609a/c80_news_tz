@@ -1,6 +1,8 @@
 require "babosa"
 module C80NewsTz
   class Rubric < ActiveRecord::Base
+    has_and_belongs_to_many :spots, :join_table => 'c80_news_tz_rubrics_spots'
+
     validates_with RubricValidator
 
     extend FriendlyId
