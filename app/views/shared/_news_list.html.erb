@@ -1,6 +1,7 @@
 <div class="div_pubs clearfix">
   <% news_for_render.each_with_index do |pub,index| %>
-      <div class="pub_medium pub_medium_<%=index%>">
+      <% k = index%3 %>
+      <div class="pub_medium pub_medium_<%= k %>">
         <div class="time"><%= pub[:time] %></div>
         <%= render_image_link_lazy_holder(pub[:pi]) %>
         <div class="rubric_title">
@@ -15,6 +16,9 @@
           <%= pub[:comments_count]%>
         </div>
       </div>
+      <% if k == 2 && index != news_for_render.count-1 %>
+      <div class="hr"></div>
+      <% end %>
   <% end %>
 </div>
 <div class="div_will_paginate">
