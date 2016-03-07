@@ -3,20 +3,19 @@ module C80NewsTz
 
     include LocalTimeHelper
 
-    def render_news_block(is_news_page=false,page=1)
+    def render_news_block(rubric_id = nil, page=1)
+      per_page = 1#Prop.first.per_page
+      news = Fact.paginate(:page => page,:per_page => per_page)
 
-      if is_news_page
-        per_page = C80NewsTz::Prop.first.per_page
-        news = Fact.paginate(:page => page,:per_page => per_page)
-      else
-        per_widget = C80NewsTz::Prop.first.per_widget
-        news = Fact.limit(per_widget)
+      news_for_render = []
+      news.each do |p|
+        news_for_render << arrange_preview_pub(p,'medium')
       end
 
       render :partial => "shared/news_block",
              :locals => {
-                 :news_list => news,
-                 :is_news_page => is_news_page
+                 :news_for_render => news_for_render,
+                 :news_list => news
              }
     end
 

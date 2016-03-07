@@ -1,12 +1,22 @@
 <div class="div_facts">
-  <% news_list.each do |fact| %>
-
-      <%= check_preview(render_one_fact(fact).to_s, fact.fphotos, fact.title) %>
-
+  <% news_for_render.each_with_index do |pub,index| %>
+      <div class="pub_medium pub_medium_<%=index%>">
+        <div class="time"><%= pub[:time] %></div>
+        <%= render_image_link_lazy_holder(pub[:pi]) %>
+        <div class="rubric_title">
+          <%= pub[:rubric] %>
+        </div>
+        <div class="title">
+          <a title="<%= pub[:title] %>" href="<%= pub[:pi][:a_href]%>"><%= pub[:title] %></a>
+        </div>
+        <%= render_image_link_lazy(pub[:cl]) if pub[:cl].present? %>
+        <div class="comments" title="Комментариев: <%= pub[:comments_count]%>">
+          <i class="fa fa-comment"></i>
+          <%= pub[:comments_count]%>
+        </div>
+      </div>
   <% end %>
 </div>
-<% if is_news_page %>
-    <div class="div_will_paginate">
-      <%= will_paginate news_list %>
-    </div>
-<% end %>
+<div class="div_will_paginate">
+  <%= will_paginate news_list %>
+</div>

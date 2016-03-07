@@ -1,5 +1,5 @@
 var $cc = $(".ajax_div");
-var html_str = "<%= j render_news_block(true,params[:page]) %>";
+var html_str = "<%= j render_news_block(params[:page]) %>";
 
 $cc.html(html_str);
 Holder.run(".ajax_div img");
