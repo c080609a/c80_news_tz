@@ -25,6 +25,9 @@ ru:
       location:
          one: 'место'
          other: 'Места на главной под публикации'
+      r_live:
+         one: 'СКРЫТЬ КНОПКУ'
+         other: 'Активный рекламодатель'
     attributes:
       c80_news_tz/notice:
         title: "Название"
@@ -74,3 +77,6 @@ ru:
       c80_news_tz/location:
         title: 'Название'
         facts: 'Публикация'
+      c80_news_tz/r_live:
+        title: 'Название'
+        advertisers: 'Рекламодатель'
