@@ -10,7 +10,7 @@ ActiveAdmin.register C80NewsTz::Spot, :as => 'Spot' do
 
   index do
     id_column
-    column :title
+    # column :title
 
     column :rubrics do |loc|
       # нарисуем список
@@ -26,7 +26,8 @@ ActiveAdmin.register C80NewsTz::Spot, :as => 'Spot' do
 
   form(:html => {:multipart => true}) do |f|
     f.inputs "Свойства" do
-      f.input :title
+      # f.input :title
+      f.input :id, :input_html => {:readonly => true }
 
       f.input :rubrics,
               :as => :select,

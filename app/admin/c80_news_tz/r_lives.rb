@@ -1,34 +1,27 @@
-ActiveAdmin.register C80NewsTz::Location, :as => 'Location' do
+ActiveAdmin.register C80NewsTz::RLive, :as => 'RLive' do
 
-  menu :label => "Публикации на главной", :parent => 'Содержимое сайта'
+  menu :label => "Рекламодатель активный", :parent => 'Содержимое сайта'
 
   before_filter :skip_sidebar!, :only => :index
 
-  permit_params :fact_ids => []
-
-  config.sort_order = 'id_asc'
+  permit_params :r_advertiser_ids => []
 
   index do
-    id_column
-    column :title
-
-    column :facts do |loc|
+    column :r_advertisers do |loc|
       # нарисуем список
-      list_items = ((loc.facts.map { |p|
-        "<li>• #{ p.title } <a href='/news/#{p.slug}' target='_blank'>[view]</a> <a href='/admin/facts/#{p.slug}/edit'>[edit]</a> </li>"
+      list_items = ((loc.r_advertisers.map { |p|
+        "<li>#{ p.title }</li>"
       }).join("")).html_safe
 
       "<ul>#{list_items}</ul>".html_safe
     end
-
     actions
   end
 
   form(:html => {:multipart => true}) do |f|
     f.inputs "Свойства" do
-      f.input :title
 
-      f.input :facts,
+      f.input :r_advertisers,
               :as => :select,
               :input_html => {:multiple => false},
               :include_blank => true,

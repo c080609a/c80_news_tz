@@ -1,0 +1,5 @@
+body.new.admin_r_advertisers, body.edit.admin_r_advertisers {
+  li#r_advertiser_r_blurbs_input > fieldset > legend.label {
+    display: none;
+  }
+}
