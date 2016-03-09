@@ -26,7 +26,7 @@ ru:
          one: 'место'
          other: 'Места на главной под публикации'
       r_live:
-         one: 'СКРЫТЬ КНОПКУ'
+         one: 'активного рекламодателя'
          other: 'Активный рекламодатель'
       r_advertiser:
          one: 'рекламодателя'
@@ -82,7 +82,7 @@ ru:
         facts: 'Публикация'
       c80_news_tz/r_live:
         title: 'Название'
-        advertisers: 'Рекламодатель'
+        r_advertisers: 'Рекламодатель'
       c80_news_tz/r_advertiser:
         title: 'Название'
         logo: 'Лого'

@@ -1,10 +1,26 @@
 body.admin_r_lives {
+
   &.index {
     #titlebar_right {
       display: none !important;
     }
     .table_tools {
       display: none !important;
+    }
+    a.view_link {
+      display: none !important;
+    }
+    a.delete_link {
+      display: none !important;
+    }
+  }
+
+  &.show {
+    #titlebar_right {
+      display: none !important;
+    }
+    #main_content > div > h3 {
+      display: none;
     }
   }
 }
