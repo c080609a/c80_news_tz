@@ -18,6 +18,11 @@ ActiveAdmin.register C80NewsTz::RAdvertiser, :as => 'RAdvertiser' do
     selectable_column
     id_column
     column :title
+    column :logo do |a|
+      if a.logo.present?
+        "#{image_tag("#{a.logo.thumb_preview_big.url}")}".html_safe
+      end
+    end
 
 =begin
     column :facts do |issue|
@@ -38,7 +43,7 @@ ActiveAdmin.register C80NewsTz::RAdvertiser, :as => 'RAdvertiser' do
     f.inputs "Свойства" do
 
       f.input :title
-      f.input :logo, :hint => "#{image_tag("#{f.object.logo.url}")}".html_safe
+      f.input :logo, :hint => "#{image_tag("#{f.object.logo.thumb_preview_big.url}")}".html_safe
     end
 
 =begin

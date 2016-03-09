@@ -30,7 +30,7 @@ module C80NewsTz
     end
 
     def store_dir
-      "uploads/reclame/advertisers/_logos/#{format("%02d", model.id)}"
+      "uploads/rec/avs/_logos/#{format("%02d", model.id)}"
     end
 
     def extension_white_list
