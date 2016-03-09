@@ -28,6 +28,9 @@ ru:
       r_live:
          one: 'СКРЫТЬ КНОПКУ'
          other: 'Активный рекламодатель'
+      r_advertiser:
+         one: 'рекламодателя'
+         other: 'Рекламодатели'
     attributes:
       c80_news_tz/notice:
         title: "Название"
@@ -80,3 +83,6 @@ ru:
       c80_news_tz/r_live:
         title: 'Название'
         advertisers: 'Рекламодатель'
+      c80_news_tz/r_advertiser:
+        title: 'Название'
+        logo: 'Лого'
