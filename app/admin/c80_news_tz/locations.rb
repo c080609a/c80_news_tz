@@ -1,6 +1,6 @@
 ActiveAdmin.register C80NewsTz::Location, :as => 'Location' do
 
-  menu :label => "Места на главной", :parent => 'Содержимое сайта'
+  menu :label => "Публикации на главной", :parent => 'Содержимое сайта'
 
   before_filter :skip_sidebar!, :only => :index
 

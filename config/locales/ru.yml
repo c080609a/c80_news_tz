@@ -35,6 +35,9 @@ ru:
         one: 'публикацию рекламодателя'
         other: 'Публикации рекламодателей'
       c80_news_tz/r_bphoto: ""
+      spot:
+        one: 'место под рубрику на главной'
+        other: 'Рубрики на главной'
     attributes:
       c80_news_tz/notice:
         title: "Название"
@@ -90,6 +93,7 @@ ru:
       c80_news_tz/r_advertiser:
         title: 'Название'
         logo: 'Лого'
+        r_blurbs: 'Публикации'
       c80_news_tz/r_blurb:
         title: 'Заголовок'
         created_at: 'Дата создания'
@@ -100,3 +104,6 @@ ru:
         leader_abz: 'Лидер абзац'
         full: ''
         r_advertisers: ''
+      c80_news_tz/spot:
+        title: 'Название'
+        rubrics: 'Рубрика'
