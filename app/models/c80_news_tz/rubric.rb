@@ -2,6 +2,8 @@ require "babosa"
 module C80NewsTz
   class Rubric < ActiveRecord::Base
     has_and_belongs_to_many :spots, :join_table => 'c80_news_tz_rubrics_spots'
+    has_and_belongs_to_many :facts, :join_table => 'c80_news_tz_facts_rubrics'
+    has_and_belongs_to_many :r_blurbs, :join_table => 'c80_news_tz_blurbs_rubrics'
 
     validates_with RubricValidator
 
@@ -15,8 +17,6 @@ module C80NewsTz
     def slug_candidates
       [:title] + Array.new(6) { |index| [:title, index+2] }
     end
-
-    has_and_belongs_to_many :facts, :join_table => 'c80_news_tz_facts_rubrics'
 
     def should_generate_new_friendly_id?
       slug.blank?

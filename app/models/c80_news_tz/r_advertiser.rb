@@ -5,8 +5,8 @@ require "babosa"
 module C80NewsTz
   class RAdvertiser < ActiveRecord::Base
 
-    # has_and_belongs_to_many :facts, :join_table => 'c80_news_tz_companies_facts'
     has_and_belongs_to_many :r_lives, :join_table => 'c80_news_tz_advs_lives'
+    has_and_belongs_to_many :r_blurbs, :join_table => 'c80_news_tz_advs_blurbs'
 
     mount_uploader :logo, RAlogoUploader
 

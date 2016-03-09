@@ -31,6 +31,10 @@ ru:
       r_advertiser:
          one: 'рекламодателя'
          other: 'Рекламодатели'
+      r_blurb:
+        one: 'публикацию рекламодателя'
+        other: 'Публикации рекламодателей'
+      c80_news_tz/r_bphoto: ""
     attributes:
       c80_news_tz/notice:
         title: "Название"
@@ -86,3 +90,13 @@ ru:
       c80_news_tz/r_advertiser:
         title: 'Название'
         logo: 'Лого'
+      c80_news_tz/r_blurb:
+        title: 'Заголовок'
+        created_at: 'Дата создания'
+        short: 'Кратко'
+        rubrics: 'Рубрики'
+        issues: 'Номер'
+        issue: 'Номер'
+        leader_abz: 'Лидер абзац'
+        full: ''
+        r_advertisers: ''
