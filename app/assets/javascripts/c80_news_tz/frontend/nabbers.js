@@ -28,7 +28,11 @@ $(document).ready(function () {
                             dataType: 'text'
                         });
 
-                        //window.location.href = $rb.attr('href');
+                        window.location.href = $rb.attr('href');
+
+                        //var $a = $('<a href="'+$rb.attr('href')+'" target="_blank">go!</a>');
+                        //$(document).append(a);
+                        //$a[0].click(); // => всплывающее окно заблокировано
 
                     });
 

@@ -61,5 +61,35 @@ module C80NewsTz
       end
     end
 
+    # рендер баннера в рекламном блоке 3
+    def render_banner_03
+
+      # извлечём баннер
+      b = Banner03.random_active
+
+      if b.present?
+
+        # увеличим счётчик показов
+        b.shown += 1
+        b.save!
+
+        # соберём информацию для рендера view
+        vp = {
+            alt_image: b.title,
+            image: b.image.thumb_fill,
+            ww: 287,       # ширина\высота совпадает с шириной\высотой, указанной в Bimage03Uploader
+            hh: 321,
+            a_href: b.href,
+            aid: 'rb03',     # используется js для подсчёта кликов
+            a_class: "rb03_#{b.id}"
+        }
+
+        render :partial => 'shared/banner_03',
+               :locals => {
+                   :vp => vp
+               }
+      end
+    end
+
   end
 end
