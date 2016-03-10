@@ -29,7 +29,7 @@ module C80NewsTz
         if class_part_name == '01'
           b = Banner01.find(banner_id)
         elsif class_part_name == '02'
-          # b = Banner02.find(banner_id)
+          b = Banner02.find(banner_id)
         elsif class_part_name == '03'
           # b = Banner03.find(banner_id)
         end

@@ -31,5 +31,35 @@ module C80NewsTz
       end
     end
 
+    # рендер баннера в рекламном блоке 2
+    def render_banner_02
+
+      # извлечём баннер
+      b = Banner02.random_active
+
+      if b.present?
+
+        # увеличим счётчик показов
+        b.shown += 1
+        b.save!
+
+        # соберём информацию для рендера view
+        vp = {
+            alt_image: b.title,
+            image: b.image.thumb_fill,
+            ww: 812,       # ширина\высота совпадает с шириной\высотой, указанной в Bimage02Uploader
+            hh: 130,
+            a_href: b.href,
+            aid: 'rb02',     # используется js для подсчёта кликов
+            a_class: "rb02_#{b.id}"
+        }
+
+        render :partial => 'shared/banner_02',
+               :locals => {
+                   :vp => vp
+               }
+      end
+    end
+
   end
 end

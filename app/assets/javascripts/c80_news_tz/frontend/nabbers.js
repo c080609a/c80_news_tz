@@ -1,26 +1,49 @@
 /* считаем клики по wow-картинкам */
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-    // prefix является:
-    //          - id ссылки, в которую завёрнута картинка,
-    //          - префиксом класса, в который вставлен id картинки
-    //          - именем маршрута, на другом конце которого считают клики
-    var prefix = 'rb01';
+    var prefixes_array = ['rb01', 'rb02', 'rb03'];
+    var iprefix, i$rb;
+    for (var i = 0; i < prefixes_array.length; i++) {
 
-    var $rb01 = $("#"+prefix);
-    $rb01.click(function (event) {
-        event.preventDefault();
+        // prefix является:
+        //          - id ссылки, в которую завёрнута картинка
+        //          - префиксом класса, в который вставлен id wow-картинки
+        iprefix = prefixes_array[i];
 
-        $.ajax({
-            url: '/'+prefix,
-            type: 'POST',
-            data: { c:$rb01.attr('class') },
-            dataType: 'text'
-        });
+        i$rb = $("#" + iprefix);
+        if (i$rb.length == 1) {
 
-        window.location.href = $rb01.attr('href');
+            var bc = (function () {
 
-    });
+                var _init = function ($rb) {
+
+                    $rb.click(function (event) {
+                        event.preventDefault();
+
+                        $.ajax({
+                            url: '/rb',
+                            type: 'POST',
+                            data: {c: $rb.attr('class')},
+                            dataType: 'text'
+                        });
+
+                        //window.location.href = $rb.attr('href');
+
+                    });
+
+                };
+
+                return {
+                    init: _init
+                }
+
+            })();
+
+            bc.init(i$rb);
+
+        }
+
+    }
 
 });
