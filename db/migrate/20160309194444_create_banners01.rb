@@ -5,6 +5,8 @@ class CreateBanners01 < ActiveRecord::Migration
       t.string :image
       t.string :href
       t.boolean :is_active
+      t.integer :shown, :default => 0
+      t.integer :clicks, :default => 0
 
       t.timestamps
     end

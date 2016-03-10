@@ -1,6 +1,6 @@
 ActiveAdmin.register C80NewsTz::Banner01, :as => 'Banner01' do
 
-  menu :label => "Баннеры 01", :parent => 'Баннеры'
+  menu :label => "Рекламный блок №1", :parent => 'Баннеры'
 
   permit_params :title,
                 :image,
@@ -28,6 +28,8 @@ ActiveAdmin.register C80NewsTz::Banner01, :as => 'Banner01' do
     end
     column :href
     column :is_active
+    column :shown
+    column :clicks
 
     actions
   end
@@ -37,6 +39,7 @@ ActiveAdmin.register C80NewsTz::Banner01, :as => 'Banner01' do
     f.inputs "Свойства" do
 
       f.input :title
+      f.input :href
       f.input :image, :hint => "#{image_tag("#{f.object.image.thumb_preview.url}")}".html_safe
       f.input :is_active
     end
