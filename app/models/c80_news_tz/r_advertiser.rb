@@ -26,5 +26,29 @@ module C80NewsTz
       # name_changed? || super
     end
 
+    # выдать активного рекламодателя (он может быть только один)
+    # если активного нету - вернётся nil
+    def self.active
+      result = nil
+
+      s = "
+        SELECT
+          `c80_news_tz_r_advertisers`.*
+        FROM
+          `c80_news_tz_r_advertisers`
+          INNER JOIN
+          `c80_news_tz_advs_lives` ON `c80_news_tz_r_advertisers`.id = `c80_news_tz_advs_lives`.r_advertiser_id;
+      "
+
+      array_of_advertisers = self.find_by_sql(s)
+
+      if array_of_advertisers.count == 1
+        result = array_of_advertisers[0]
+      end
+
+      result
+
+    end
+
   end
 end
