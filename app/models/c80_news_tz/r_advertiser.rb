@@ -26,6 +26,16 @@ module C80NewsTz
       # name_changed? || super
     end
 
+    # выдать путь до лого для вставки в блок "публикации рекламодателя"
+    # иначе вернёт nil
+    def logo_for_aapub
+      result = nil
+      if logo.present?
+        result = logo.thumb_fill
+      end
+      result
+    end
+
     # выдать активного рекламодателя (он может быть только один)
     # если активного нету - вернётся nil
     def self.active

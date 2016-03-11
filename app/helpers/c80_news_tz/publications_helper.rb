@@ -76,7 +76,8 @@ module C80NewsTz
           title: pub.title,
           rubric: pub.rubric_title,
           time: local_time(pub[:created_at], format: '%H:%M %d.%m.%Y'),
-          comments_count: 12
+          comments_count: 12,
+          href: url_for_fact(pub) # TODO_MY:: используется в _simple_preview_list.html.erb, надо использовать везде
       }
 
       result
