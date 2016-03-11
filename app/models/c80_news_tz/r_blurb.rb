@@ -29,12 +29,9 @@ module C80NewsTz
       [:title] + Array.new(6) {|index| [:title, index+2]}
     end
 
-    # TODO_MY:: используется ли метод short_meta_description?
     def short_meta_description
 
-      if description.present? && description.length > 200
-        result = description
-      elsif full.present? && full.length > 0
+      if full.present? && full.length > 0
         result = strip_tags(full[0..200]+"...")
       else
         result = nil
@@ -86,6 +83,36 @@ module C80NewsTz
       result = ""
       if rubrics.count > 0
         result = rubrics.first.title
+      end
+      result
+    end
+
+    # выдать id первой попавшейся рубрики
+    # если рубрики у публикации нету - выдать невероятное число 999999
+    def rubric_id
+      result = 999999
+      if rubrics.count > 0
+        result = rubrics.first.id
+      end
+      result
+    end
+
+    # выдать id первого попавшегося номера
+    # если номера у публикации нету - выдать невероятное число 999999
+    def issue_id
+      result = 999999
+      if issues.count > 0
+        result = issues.first.id
+      end
+      result
+    end
+
+    # выдать название номера, которому принадлежит новость
+    # если чего-то не хватает - выдаётся пустая строка
+    def issue_title
+      result = ""
+      if issues.count > 0
+        result = issues.first.number
       end
       result
     end
