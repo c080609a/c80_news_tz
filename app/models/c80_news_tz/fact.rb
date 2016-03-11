@@ -61,6 +61,24 @@ module C80NewsTz
       result
     end
 
+    def rubric_id
+      result = 999999
+      if rubrics.count > 0
+        result = rubrics.first.id
+      end
+      result
+    end
+
+    # выдать название номера, которому принадлежит новость
+    # если чего-то не хватает - выдаётся пустая строка
+    def issue_title
+      result = ""
+      if issues.count > 0
+        result = issues.first.number
+      end
+      result
+    end
+
     # выдать логотип первой попавшейся компании
     # если чего-то нету - выдаётся nil
     def company_logo
@@ -97,6 +115,15 @@ module C80NewsTz
     # выдать факты, принадлежащие указанной рубрике
     def self.where_rubric(rubric_slug)
       self.joins(:rubrics).where(:c80_news_tz_rubrics => {:slug => rubric_slug})
+    end
+
+    # выдать нужное количество публикаций из той же рубрики
+    def self.similar_pubs(pub, count)
+      r = self.joins(:rubrics)
+          .where(:c80_news_tz_rubrics => {:id => pub.rubric_id})
+          .where.not(:c80_news_tz_facts => {:id => pub.id})
+          .limit(count)
+      r
     end
 
   end
