@@ -61,6 +61,8 @@ module C80NewsTz
       result
     end
 
+    # выдать id первой попавшейся рубрики
+    # если рубрики у публикации нету - выдать невероятное число 999999
     def rubric_id
       result = 999999
       if rubrics.count > 0
@@ -69,6 +71,16 @@ module C80NewsTz
       result
     end
 
+    # выдать id первого попавшегося номера
+    # если номера у публикации нету - выдать невероятное число 999999
+    def issue_id
+      result = 999999
+      if issues.count > 0
+        result = issues.first.id
+      end
+      result
+    end    
+    
     # выдать название номера, которому принадлежит новость
     # если чего-то не хватает - выдаётся пустая строка
     def issue_title
@@ -118,11 +130,20 @@ module C80NewsTz
     end
 
     # выдать нужное количество публикаций из той же рубрики
-    def self.similar_pubs(pub, count)
+    def self.similar_rubric_pubs(pub, count)
       r = self.joins(:rubrics)
           .where(:c80_news_tz_rubrics => {:id => pub.rubric_id})
           .where.not(:c80_news_tz_facts => {:id => pub.id})
           .limit(count)
+      r
+    end
+
+    # выдать нужное количество публикаций из того же номера
+    def self.similar_issue_pubs(pub, count)
+      r = self.joins(:issues)
+              .where(:c80_news_tz_issues => {:id => pub.issue_id})
+              .where.not(:c80_news_tz_facts => {:id => pub.id})
+              .limit(count)
       r
     end
 
