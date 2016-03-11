@@ -22,5 +22,13 @@ module C80NewsTz
       "#{root_url}issues/#{issue_id}"
     end
 
+    def apph_url_for_advertiser(advertiser_slug)
+      "#{root_url}publishers/#{advertiser_slug}"
+    end
+
+    def apph_url_for_blurb(blurb)
+      "#{root_url}publications/#{blurb.slug}"
+    end
+
   end
 end

@@ -46,8 +46,30 @@ module C80NewsTz
     # выдать публикации, принадлежащие указанной рубрике
     def self.where_rubric(rubric_slug)
       self.joins(:rubrics).where(:c80_news_tz_rubrics => {:slug => rubric_slug})
-    end    
-    
+    end
+
+    # выдать массив с двумя последними публикациями указанного рекламодателя
+    # массив может содержать элементов: 0, 1, 2
+    def self.two_last_pubs_by_advr(advertiser_id)
+      s = "
+        SELECT
+          `c80_news_tz_r_blurbs`.*
+        FROM
+          `c80_news_tz_r_blurbs`
+        INNER JOIN
+          `c80_news_tz_advs_blurbs` ON `c80_news_tz_r_blurbs`.id = `c80_news_tz_advs_blurbs`.r_blurb_id
+        WHERE
+          `c80_news_tz_advs_blurbs`.r_advertiser_id = #{advertiser_id}
+        ORDER BY
+          `c80_news_tz_r_blurbs`.created_at DESC
+        LIMIT 2;
+      "
+
+      result = self.find_by_sql(s)
+      result
+
+    end
+
     # выдать картинку, которая пойдёт в блок преьвю
     def photo_preview
       result = nil

@@ -8,14 +8,20 @@ module C80NewsTz
 
     process :resize_to_limit => [500,500]
 
+
+
+    # вставляются в блок "публикации рекламодателя"
     version :thumb_fit do
-      process :resize_to_fit => [124,124]
+      process :resize_to_fit => [282,82]
     end
 
     version :thumb_fill do
-      process :resize_to_fill => [124,74]
+      process :resize_to_fill => [282,82]
     end
 
+
+
+    # по идее, должны вставляться в preview блока новости
     version :thumb_preview_small do
       process :resize_to_fit => [80, 44]
     end
@@ -28,6 +34,9 @@ module C80NewsTz
     version :thumb_preview_big do
       process :resize_to_fit => [124, 124]
     end
+
+
+
 
     def store_dir
       "uploads/rec/avs/_logos/#{format("%02d", model.id)}"
