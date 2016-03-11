@@ -1,3 +1,3 @@
 module C80NewsTz
-  VERSION = "0.1.1.20"
+  VERSION = "0.1.1.21"
 end
