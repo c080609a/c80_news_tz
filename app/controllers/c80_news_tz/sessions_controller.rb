@@ -13,7 +13,8 @@ module C80NewsTz
         flash[:warning] = 'There was an error while try to authenticate you...'
       end
 
-      # redirect_to request.referer
+      # Rails.logger.debug("<SessionsController.create> request.env['omniauth.origin'] = " + request.env['omniauth.origin'])
+      redirect_to request.env['omniauth.origin']
 
     end
 
