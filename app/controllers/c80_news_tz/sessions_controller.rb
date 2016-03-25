@@ -28,6 +28,11 @@ module C80NewsTz
 
     end
 
+    def auth_failure
+      # redirect_to request.referer
+      redirect_to request.env['omniauth.origin']
+    end
+
   end
 
 end

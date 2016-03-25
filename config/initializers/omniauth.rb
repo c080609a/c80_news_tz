@@ -16,5 +16,9 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :linkedin, ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'],
       scope: 'r_basicprofile',
       fields: %w'id first-name last-name location picture-url public_profile_url'
-  
+
+end
+
+OmniAuth.config.on_failure = Proc.new do |env|
+  C80NewsTz::SessionsController.action(:auth_failure).call(env)
 end
