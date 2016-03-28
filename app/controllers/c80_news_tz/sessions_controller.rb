@@ -19,10 +19,13 @@ module C80NewsTz
     end
 
     def destroy
-      if current_user
+      #if current_user
+      begin
         session.delete(:user_id)
-        flash[:success] = 'See you!'
+      rescue
       end
+
+      flash[:success] = 'See you!'
 
       redirect_to request.referer
 
