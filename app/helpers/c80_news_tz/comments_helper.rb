@@ -2,7 +2,7 @@ module C80NewsTz
   module CommentsHelper
 
     # рендер блока с комментариями к публикации
-    def render_comments_block(blurb_or_fact)
+    def render_comments_block(blurb_or_fact, current_user = nil)
 
       n = blurb_or_fact.comments.count
       # list = [
@@ -46,10 +46,23 @@ module C80NewsTz
 
       list = blurb_or_fact.comments
 
+      if blurb_or_fact.is_a?(Fact)
+        r_blurb_id = -1
+        fact_id = blurb_or_fact.id
+      else
+        r_blurb_id = blurb_or_fact.id
+        fact_id = -1
+      end
+
       render :partial => "c80_news_tz/comments/shared/comments_block",
              :locals => {
                  :comments_count => n,
-                 :comments_list => list
+                 :comments_list => list,
+                 :form_params => {
+                    :current_user => current_user,
+                    :r_blurb_id => r_blurb_id,
+                    :fact_id => fact_id
+                 }
              }
     end
 
@@ -70,8 +83,15 @@ module C80NewsTz
     end
 
     # рендер формы либо отправки комментария, либо ответа на комментарий
-    def render_comment_form
-      render :partial => "c80_news_tz/comments/shared/reply_comment_form"
+    def render_comment_form(options)
+      unless options[:current_user].nil?
+        render :partial => "c80_news_tz/comments/shared/reply_comment_form",
+               :locals => {
+                   current_user_id: options[:current_user].id,
+                   r_blurb_id: options[:r_blurb_id],
+                   fact_id: options[:fact_id]
+               }
+      end
     end
 
   end

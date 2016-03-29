@@ -1,7 +1,7 @@
 <%= form_for :comment, remote: true, :html => {id: 'comment_form'} do |f| %>
-    <%= f.hidden_field(:user_id) %>
-    <%= f.hidden_field(:fact_id) %>
-    <%= f.hidden_field(:r_blurb_id) %>
+    <%= f.hidden_field(:user_id, value: current_user_id) %>
+    <%= f.hidden_field(:fact_id, value: fact_id) %>
+    <%= f.hidden_field(:r_blurb_id, value: r_blurb_id) %>
     <div class="editor">
       <div class="text_holder">
         <%= f.text_area :message, id: 'comment_message', rows: 10, cols: 30 %>
