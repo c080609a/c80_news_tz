@@ -5,4 +5,6 @@ C80NewsTz::Engine.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  resources :comments, :only => :create
+
 end
