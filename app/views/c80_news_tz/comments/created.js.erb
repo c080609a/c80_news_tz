@@ -1,1 +1,5 @@
-alert(1)
+
+var $comment = $(<%= j render_comment_item(@comment) %>);
+var $comments_list = $('ul#comments_list');
+
+$comments_list.append($comment);
