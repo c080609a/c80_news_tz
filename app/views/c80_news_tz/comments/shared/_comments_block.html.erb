@@ -1,0 +1,18 @@
+<div id="comments_block">
+  <h2>Комментарии (<%= comments_count %>)</h2>
+
+  <ul id="comments_list">
+    <%= render_comments_list(comments_list) %>
+  </ul>
+
+  <h2 class="write_comment">
+    <%= link_to "Написать комментарий", "#", onclick: 'return comment_show_form()' %>
+  </h2>
+
+  <div id="comment_form_placeholder"></div>
+
+</div>
+
+<div id="shadow" class="hidden">
+    <%= render_comment_form %>
+</div>

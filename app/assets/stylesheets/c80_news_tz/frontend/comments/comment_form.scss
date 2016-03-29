@@ -1,0 +1,43 @@
+form#comment_form {
+  display: block;
+
+  div.editor {
+    position: relative;
+    margin-bottom: 10px;
+
+    div.text_holder {
+      border: 1px solid #dcdcdc;
+      padding: 0;
+      background: #fff;
+      box-sizing: border-box;
+
+      textarea {
+        width: 100%;
+        padding: 4px;
+        border: 0;
+        margin: 0;
+        font-size: 14px;
+        outline: 0;
+        height: 120px;
+        vertical-align: top;
+        box-sizing: border-box;
+      }
+
+    }
+
+  }
+
+  span.error {
+    color: red;
+  }
+
+  .btn {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: #ffffff !important;
+    }
+
+  }
+
+}
