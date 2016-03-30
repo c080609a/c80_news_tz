@@ -11,10 +11,12 @@
           <a title="<%= pub[:title] %>" href="<%= pub[:pi][:a_href]%>"><%= pub[:title] %></a>
         </div>
         <%= render_image_link_lazy(pub[:cl]) if pub[:cl].present? %>
-        <div class="comments" title="Комментариев: <%= pub[:comments_count]%>">
-          <i class="fa fa-comment"></i>
-          <%= pub[:comments_count]%>
-        </div>
+        <%= link_to("#{pub[:href]}#comments_block",
+                    title: "Комментариев: #{pub[:comments_count]}",
+                    class: 'comments') do %>
+            <i class="fa fa-comment"></i>
+            <%= pub[:comments_count] %>
+        <% end %>
       </div>
       <% if k == 2 && index != news_for_render.count-1 %>
       <div class="hr"></div>
