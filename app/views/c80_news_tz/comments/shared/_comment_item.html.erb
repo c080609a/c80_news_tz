@@ -28,14 +28,14 @@
 
     <% unless comment.answers.nil? %>
         <%# кнопка покажет ответы на комментарий %>
-        <div class="reply">
+        <!--<div class="reply">-->
           <%# TODO_MY:: вставить вместо 1 количество ответов на комментарий %>
-          <%= link_to "ответов: 1",
+          <%# link_to "ответов: 1",
                       '#reply',
                       :class => 'reply_link',
                       :onclick => "return comment_show_reply_form(#{comment.id})"
           %>
-        </div>
+        <!--</div>-->
 
         <div class="comment_answers hidden">
           <ul><%= render_comments_list(comment.answers) %></ul>
