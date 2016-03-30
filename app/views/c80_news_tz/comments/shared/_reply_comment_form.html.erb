@@ -6,9 +6,9 @@
       <div class="text_holder">
         <%= f.text_area :message, id: 'comment_message', rows: 10, cols: 30 %>
       </div>
-      <span id="error_text" class="error"></span>
     </div>
     <div class="buttons">
       <%= f.submit :id => 'comment_submit', class: 'btn btn-default', disabled:'disabled' %>
+      <span id="error_text" class="error"></span>
     </div>
 <% end %>

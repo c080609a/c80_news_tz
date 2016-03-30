@@ -4,10 +4,13 @@ $(document).ready(function () {
     var $comment_message = $("#comment_message");
 
     var fCheckText = function (e) {
-        if (!empty($(this).val())) {
-            $("input#comment_submit", $form).attr("disabled", false)
-        } else {
-            $("input#comment_submit", $form).attr("disabled", true)
+        var $submit = $("input#comment_submit", $form);
+        if (!$submit.hasClass('loading')) {
+            if (!empty($(this).val())) {
+                $submit.removeAttr("disabled");
+            } else {
+                $submit.attr("disabled", true);
+            }
         }
     };
 
@@ -37,7 +40,7 @@ function comment_show_form() {
         //$(".time_left", form).text("");
         $placeholder.append($form);
         //$(".edit,.delete", form).addClass("hidden");
-        $("input#comment_submit", $form).removeClass("loading");
+        $("input#comment_submit", $form).removeAttr('disabled').removeClass("loading");
         $form.show();
         $("#comment_message", $form).val("").focus();
         $('.comment_answers').addClass('hidden');
@@ -51,7 +54,7 @@ function comment_show_form() {
     return false
 }
 
-function comment_show_reply_form(comment_id) {
+/*function comment_show_reply_form(comment_id) {
     //clearInterval(window.timer);
     //$(".comment_item .reply").removeClass("hidden");
     var form = $("#comment_form");
@@ -78,7 +81,7 @@ function comment_show_reply_form(comment_id) {
         //placeholder.removeClass("hidden")
     }
     return false
-}
+}*/
 
 // открыть ответы указанного коментария, ответы остальных комментариев - скрыть
 function _show_comment_answers($comment_answers) {

@@ -11,6 +11,6 @@ var $li_bg = $comment.find('.new_comment_indicator');
 $li_bg.css("display","block").fadeOut(10000);
 
 $comment_block.find('h2.title span').text("<%= @comments_count %>");
-$('div.fact_time_issue div.comments')
+$('div.fact_time_issue a.comments')
         .attr('title','Комментариев: <%= @comments_count %>')
         .find('span').text("<%= @comments_count %>");

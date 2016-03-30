@@ -21,6 +21,7 @@ module C80NewsTz
     def destroy
       if current_user
         session.delete(:user_id)
+        session.delete(:last_comment_ts)
         flash[:success] = 'See you!'
       end
 
