@@ -39,13 +39,16 @@ div.pub_medium {
     }
   }
 
-  div.comments {
+  a.comments {
     cursor: pointer;
     color: #9c9c9c;
     font-size: 12px;
 
+    margin: 0;
+    height: 41px;
+    line-height: 41px;
     position: absolute;
-    bottom: 5px;
+    bottom: 0;
 
     i {
       width: 12px;

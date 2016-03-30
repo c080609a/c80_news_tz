@@ -1,0 +1,49 @@
+<li class="comment_item" id="comment_<%= comment.id %>">
+
+  <div class="comment_body">
+
+    <div class="comment_info" rel="<%= comment.id %>">
+
+      <%# аватар и никнейм %>
+      <span class="user-info" rel="user-popover" data-user-login="<%= comment.user_name %>" data-target="webuiPopover0">
+            <%= link_to image_tag(comment.user.image_url, :alt => comment.user_name),
+                        comment.user.url,
+                        :title => comment.user_name,
+                        :class => 'avatar'
+            %>
+        <%= link_to comment.user_name, comment.user.url, :class => 'username' %>
+          </span>
+
+      <%# время комментария %>
+      <time class="time_published"><%= local_time(comment.created_at, format: '%H:%M %d.%m.%Y') %></time>
+
+      <%# кнопки взаимодействия с комментарием %>
+      <span class="controls">
+            <%= link_to "", "#comment_#{comment.id}", :class => 'anchor', :title => 'Ссылка на комментарий' %>
+          </span>
+
+    </div>
+
+    <div class="message"><%= comment.message %></div>
+
+    <% unless comment.answers.nil? %>
+        <%# кнопка покажет ответы на комментарий %>
+        <!--<div class="reply">-->
+          <%# TODO_MY:: вставить вместо 1 количество ответов на комментарий %>
+          <%# link_to "ответов: 1",
+                      '#reply',
+                      :class => 'reply_link',
+                      :onclick => "return comment_show_reply_form(#{comment.id})"
+          %>
+        <!--</div>-->
+
+        <div class="comment_answers hidden">
+          <ul><%= render_comments_list(comment.answers) %></ul>
+          <div class="reply_form_placeholder"></div>
+        </div>
+    <% end %>
+  </div>
+
+  <div class="new_comment_indicator"></div>
+
+</li>

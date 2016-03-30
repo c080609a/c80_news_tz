@@ -14,6 +14,7 @@ module C80NewsTz
     has_and_belongs_to_many :rubrics, :join_table => 'c80_news_tz_facts_rubrics'
     has_and_belongs_to_many :companies, :join_table => 'c80_news_tz_companies_facts'
     has_and_belongs_to_many :locations, :join_table => 'c80_news_tz_facts_locations'
+    has_many :comments, :dependent => :destroy
 
     validates_with FactValidator
     default_scope {order(:created_at => :desc)}

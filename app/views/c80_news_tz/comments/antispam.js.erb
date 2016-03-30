@@ -1,0 +1,21 @@
+var $form = $('form#comment_form');
+if ($form.find('span#t').length == 0) {
+    var time_elapsed = <%= @time_elapsed %>;
+    var $error_text = $form.find("span#error_text");
+    var $submit = $form.find('#comment_submit');
+    var $message = $('<span>Чтобы оставить новый комментарий, Вам необходимо подождать <span id="t"><%= @time_elapsed %></span> сек</span>');
+    var $time_elapsed = $message.find('span#t');
+    $error_text.append($message);
+
+    var refreshTimer = function () {
+        time_elapsed -= 1;
+        if (time_elapsed == 0) {
+            $error_text.html('');
+            $submit.removeClass('loading').removeAttr("disabled");
+            clearInterval(interval);
+        } else {
+            $time_elapsed.text(time_elapsed);
+        }
+    };
+    var interval = setInterval(refreshTimer, 1000);
+}
