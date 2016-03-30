@@ -5,9 +5,11 @@ module C80NewsTz
 
       mark_spam = false
       time_delta = 0
+      user = User.find(params[:comment][:user_id])
 
-      if session['last_comment_ts'].present?
-        time_delta = Time.now.to_i - session['last_comment_ts']
+      # проверим, не спамер ли это?
+      unless user.last_comment_ts.nil?
+        time_delta = Time.now.to_i - user.last_comment_ts
         mark_spam = time_delta < 30
       end
 
@@ -19,7 +21,7 @@ module C80NewsTz
       else
         @comment = Comment.create(comment_params)
         if @comment.save
-          session['last_comment_ts'] = Time.now.to_i
+          update_user_last_comment(user)
           @comments_count = @comment.blurb_or_fact.comments.count
           respond_to do |format|
             format.js { render :action => 'created'}
@@ -35,6 +37,13 @@ module C80NewsTz
 
     def comment_params
       params.require(:comment).permit(:message, :user_id, :fact_id, :r_blurb_id)
+    end
+
+    private
+
+    def update_user_last_comment(user)
+      user.last_comment_ts = Time.now.to_i
+      user.save
     end
 
   end
