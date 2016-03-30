@@ -39,8 +39,11 @@ div#comments_block {
 
     li.comment_item {
       margin-bottom: 20px;
+      position: relative;
 
       div.comment_body {
+        position: relative;
+        z-index: 10;
 
         &.active {
           /*background-color: #E7E7E8;*/
@@ -171,6 +174,17 @@ div#comments_block {
           }
         }
 
+      }
+
+      div.new_comment_indicator {
+        position: absolute;
+        top: -5px;
+        bottom: -5px;
+        left: -5px;
+        right: -5px;
+        z-index: 5;
+        background-color: rgba(127, 255, 0, 0.56);
+        display: none;
       }
 
     }

@@ -4,6 +4,7 @@ module C80NewsTz
     def create
       @comment = Comment.create(comment_params)
       if @comment.save
+        @comments_count = @comment.blurb_or_fact.comments.count
         respond_to do |format|
           format.js { render :action => 'created'}
         end

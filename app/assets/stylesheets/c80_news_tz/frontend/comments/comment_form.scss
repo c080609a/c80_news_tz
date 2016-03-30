@@ -32,12 +32,17 @@ form#comment_form {
   }
 
   .btn {
+
     &:hover,
     &:focus,
     &.focus {
       background-color: #ffffff !important;
     }
 
+    &.loading {
+      background: #ffffff url(image_path('loader_button.gif')) repeat 0 0;
+    }
+    
   }
 
 }

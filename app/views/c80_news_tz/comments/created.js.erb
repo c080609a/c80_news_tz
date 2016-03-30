@@ -1,5 +1,16 @@
 
-var $comment = $(<%= j render_comment_item(@comment) %>);
+var $comment = $("<%= j render_comment_item(@comment) %>");
 var $comments_list = $('ul#comments_list');
+var $form = $('form#comment_form');
+var $comment_block = $('div#comments_block');
 
 $comments_list.append($comment);
+$form.hide();
+
+var $li_bg = $comment.find('.new_comment_indicator');
+$li_bg.css("display","block").fadeOut(10000);
+
+$comment_block.find('h2.title span').text("<%= @comments_count %>");
+$('div.fact_time_issue div.comments')
+        .attr('title','Комментариев: <%= @comments_count %>')
+        .find('span').text("<%= @comments_count %>");

@@ -16,6 +16,12 @@ $(document).ready(function() {
     $comment_message.blur(fCheckText);
     $comment_message.focus(fCheckText);
 
+    $form.submit(function(){
+        $("input#comment_submit", $form)
+            .attr('disabled',true)
+            .addClass('loading');
+    });
+
 });
 
 function comment_show_form() {
@@ -28,7 +34,7 @@ function comment_show_form() {
     //$(".time_left", form).text("");
     $("#comment_form_placeholder").append(form);
     //$(".edit,.delete", form).addClass("hidden");
-    //$(".submit", form).removeClass("hidden");
+    $("input#comment_submit", form).removeClass("loading");
     form.show();
     $("#comment_message", form).val("").focus();
     $('.comment_answers').addClass('hidden');
