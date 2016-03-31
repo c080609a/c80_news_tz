@@ -47,9 +47,10 @@ function comment_show_form() {
         $form.attr('action', '/comments.js');
     } else {
         var $social = $("#social_buttons");
-        $social.attr('id','social_buttons_2');
-        $social.find('p').text('Чтобы иметь возможность оставлять комментарии, пожалуйста, авторизуйтесь через:');
-        $placeholder.append($social.clone());
+        var $social_cloned = $social.clone();
+        $social_cloned.attr('id','social_buttons_2');
+        $social_cloned.find('p').text('Чтобы иметь возможность оставлять комментарии, пожалуйста, авторизуйтесь через:');
+        $placeholder.append($social_cloned);
     }
     return false
 }

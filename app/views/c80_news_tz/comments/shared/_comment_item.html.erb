@@ -9,9 +9,10 @@
             <%= link_to image_tag(comment.user.image_url, :alt => comment.user_name),
                         comment.user.url,
                         :title => comment.user_name,
-                        :class => 'avatar'
+                        :class => 'avatar',
+                        :target => '_blank'
             %>
-        <%= link_to comment.user_name, comment.user.url, :class => 'username' %>
+        <%= link_to comment.user_name, comment.user.url, class:'username', title:comment.user_name, target:'_blank' %>
           </span>
 
       <%# время комментария %>

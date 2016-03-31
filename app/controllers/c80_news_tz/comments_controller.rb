@@ -1,6 +1,8 @@
 module C80NewsTz
   class CommentsController < ApplicationController
 
+    before_action :check_comments_enabled
+
     def create
 
       mark_spam = false
@@ -35,15 +37,25 @@ module C80NewsTz
 
     end
 
+    private
+
     def comment_params
       params.require(:comment).permit(:message, :user_id, :fact_id, :r_blurb_id)
     end
 
-    private
 
     def update_user_last_comment(user)
       user.last_comment_ts = Time.now.to_i
       user.save
+    end
+
+    def check_comments_enabled
+      comments_enabled = CommentsProps.find(1).comments_enabled
+      unless comments_enabled
+        respond_to do |format|
+          format.js { render :action => 'comments_disabled' }
+        end
+      end
     end
 
   end

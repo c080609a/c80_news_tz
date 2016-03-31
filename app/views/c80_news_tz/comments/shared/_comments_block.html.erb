@@ -5,9 +5,11 @@
     <%= render_comments_list(comments_list) %>
   </ul>
 
-  <h2 class="write_comment">
-    <%= link_to "Написать комментарий", "#", onclick: 'return comment_show_form()' %>
-  </h2>
+  <% if form_params[:comments_enabled] %>
+      <h2 class="write_comment">
+        <%= link_to "Написать комментарий", "#", onclick: 'return comment_show_form()' %>
+      </h2>
+  <% end %>
 
   <div id="comment_form_placeholder"></div>
 
