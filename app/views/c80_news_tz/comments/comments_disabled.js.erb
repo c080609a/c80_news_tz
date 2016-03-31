@@ -1,0 +1,7 @@
+var $form = $('form#comment_form');
+if ($form.length) {
+    var $error_text = $form.find("span#error_text");
+    var $message = $('<span>Возможность комментирования временно отключена, на сайте ведутся технические работы.</span>');
+    $error_text.text("");
+    $error_text.append($message);
+}
