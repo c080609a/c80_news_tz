@@ -1,0 +1,37 @@
+<div class="div_pubs clearfix">
+  <% companies_for_render.each_with_index do |c,index| %>
+      <% k = index%3 %>
+      <div class="pub_medium pub_medium_<%= k %>">
+
+        <!--<div class="time"><%# что бы тут вывести? %></div>-->
+
+        <%# лого компании %>
+        <%= render_image_link_lazy_holder(c[:logo]) %>
+
+        <%# тип деятельности %>
+        <div class="rubric_title"><%= c[:activity_type] %></div>
+
+        <%# название компании %>
+        <div class="title"><%= link_to c[:title], c[:href], title:c[:title] %></div>
+
+        <%= link_to("#{c[:href]}",
+                    title: "Публикаций: #{c[:pubs_count]}",
+                    class: 'comments') do %>
+            <i class="fa fa-file-text"></i>
+            <%= c[:pubs_count] %>
+        <% end %>
+
+        <div class="desc_short">
+          <%= c[:desc_short] %>
+        </div>
+
+      </div>
+
+      <% if k == 2 && index != companies_for_render.count-1 %>
+          <div class="hr"></div>
+      <% end %>
+  <% end %>
+</div>
+<div class="div_will_paginate">
+  <%= will_paginate companies %>
+</div>
