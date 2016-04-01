@@ -8,7 +8,7 @@ module C80NewsTz
 
     process :resize_to_limit => [500,500]
 
-    version :thumb_fit do
+      version :thumb_fit do
       process :resize_to_fit => [124,124]
     end
 
@@ -27,6 +27,18 @@ module C80NewsTz
     # идёт в блок "главная публикация", что на главной
     version :thumb_preview_big do
       process :resize_to_fit => [124, 124]
+    end
+
+    # идёт в блок в списке партнёров на странице "партнёры"
+    version :thumb_preview_list do
+      process :resize_to_w223
+      #process :resize_to_fit => [223, 310]
+    end
+
+    # выдать актуальную ширину\высоту thumb_preview_list
+    def thumb_preview_list_wh
+      image = ::MiniMagick::Image.open(model.logo.thumb_preview_list.current_path)
+      [image["width"], image["height"]]
     end
 
     def store_dir
@@ -49,6 +61,29 @@ module C80NewsTz
       model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.hex(length/2))
     end
 
+    private
+
+    # NB:: подгон под ширину preview image в pub_medium
+    def resize_to_w223
+      manipulate! do |img|
+        w = 223
+        h = calc_height_of_image(w)
+        img.resize "#{w}x#{h}>"
+        img = yield(img) if block_given?
+        img
+      end
+    end
+
+    def calc_height_of_image(w)
+      model_image = ::MiniMagick::Image.open(model.logo.current_path)
+      calc_height(w, model_image["width"], model_image["height"])
+    end
+
+    # подгоняем по ширине, рассчитываем высоту
+    def calc_height(width, original_w, original_h)
+      k = width.to_f/original_w
+      original_h * k
+    end
 
   end
 

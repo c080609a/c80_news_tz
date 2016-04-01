@@ -11,6 +11,26 @@ div.pub_medium {
     margin: 0 71px;
   }
 
+  a.preview_image {
+    width: 223px;
+    height: 149px;
+    background-image: none !important;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+
+    span.helper {
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+    }
+
+    img {
+      vertical-align: middle;
+    }
+
+  }
+
   div.time {
     height: 24px;
     line-height: 24px;
@@ -62,6 +82,10 @@ div.pub_medium {
     position: absolute;
     bottom:0;
     right:0;
+  }
+
+  div.desc_short {
+
   }
 
 }

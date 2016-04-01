@@ -30,7 +30,8 @@ module C80NewsTz
           :image => photo_preview,
           :ww => ww,
           :hh => hh,
-          :a_href => url_for_fact(pub)
+          :a_href => url_for_fact(pub),
+          :a_class => 'preview_image'
       }
 
       # соберём характеристики компании главной публикации
